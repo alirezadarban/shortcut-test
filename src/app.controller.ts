@@ -4,7 +4,7 @@ import { JwtAuthGuard } from "./auth/guards/jwt-auth.guard";
 import { LocalAuthGuard } from "./auth/guards/local-auth.guard";
 import { CreateUserDto } from "./users/create-user.dto";
 import { UsersService } from "./users/users.service";
-import { LinkGenService } from "./link-gen/link-gen.service";
+import { UrlGenService } from "./url-gen/url-gen.service";
 import { Response } from "express";
 
 @Controller()
@@ -12,7 +12,7 @@ export class AppController {
   constructor(
     private readonly authService: AuthService,
     private readonly usersService: UsersService,
-    private readonly linkGenService: LinkGenService
+    private readonly linkGenService: UrlGenService
   ) {}
 
   @Post("register")

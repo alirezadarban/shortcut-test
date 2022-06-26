@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { LinkGenModule } from './link-gen/link-gen.module';
+import { UrlGenModule } from './url-gen/url-gen.module';
 
 @Module({
   imports: [AuthModule, UsersModule,
@@ -18,7 +18,7 @@ import { LinkGenModule } from './link-gen/link-gen.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    LinkGenModule,
+    UrlGenModule,
   ],
   controllers: [AppController],
   providers: [AppService],

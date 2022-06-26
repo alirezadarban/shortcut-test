@@ -5,14 +5,14 @@ import { User } from "./entities/users.entity";
 import { CreateUserDto } from "./create-user.dto";
 import * as bcrypt from "bcrypt";
 import globalValues from "../globalValues";
-import { LinkGenService } from "../link-gen/link-gen.service";
+import { UrlGenService } from "../url-gen/url-gen.service";
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    private readonly linkGenService: LinkGenService
+    private readonly urkGenService: UrlGenService
   ) {
   }
 
@@ -54,9 +54,9 @@ export class UsersService {
       if (!existUser) {
         throw new NotFoundException();
       }
-      const urls = await this.linkGenService.find(existUser.id)
+      const urls = await this.urkGenService.find(existUser.id);
       const urlsArray = urls.map(x => {
-        return {url: x['url'], converted: this.linkGenService.idToShortURL(x['id'])}
+        return {url: x['url'], converted: this.urkGenService.idToShortURL(x['id'])}
       });
       return globalValues.response(
         true,
